@@ -4,12 +4,11 @@
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <!-- <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a> -->
-    <a class="site-title" href="{{ '/' | site.baseurl }}">
+    <a class="site-title" href="{{ site.baseurl | default: '/' }}">
       <img src="{{ '/images/logo-262x300.png' | relative_url }}" alt="{{ site.title | escape }} logo"
         style="max-width: auto; height: 45px;">
     </a>
-    <a class="site-title" rel="author" href="{{ '/' | site.baseurl }}">{{ site.title | escape }}</a>
-
+    <a class="site-title" rel="author" href="{{ site.baseurl | default: '/' }}">{{ site.title | escape }}</a>
     {%- if page_paths -%}
     <nav class="site-nav">
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />

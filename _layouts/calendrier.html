@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar/main.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar/main.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar/main.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/multimonth/index.global.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      events: {
+        url: 'https://canada-holidays.ca/ics?cd=true',
+        format: 'ics'
+        //https://stackoverflow.com/questions/66801842/using-fullcalendar-icalendar-with-script-tags
+        // eventSources: [
+        //   {
+        //     url: "https://www.gov.uk/bank-holidays/england-and-wales.ics",
+        //     format: "ics",
+        //   },
+        //   {
+        //     url: "https://www.gov.uk/bank-holidays/england-and-wales.ics",
+        //     format: "ics",
+        //   },
+        //   {
+        //     url: 'https://canada-holidays.ca/ics?cd=true',
+        //     format: 'ics'
+        //   }
+        // ]
+      },
+      initialView: 'dayGridMonth',
+      locale: 'fr-ch',
+      buttonText: {
+        today: 'Aujourd\'hui',
+        month: 'Mois',
+        week: 'Semaine',
+        day: 'Jour',
+        list: 'Liste'
+      },
+    });
+    calendar.render();
+  });
+</script>
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+  <div id='calendar'></div>
+</article>
